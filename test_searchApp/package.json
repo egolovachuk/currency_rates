@@ -1,0 +1,20 @@
+{
+  "name": "test_searchapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "currency_rates"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "request": "^2.88.2"
+  }
+}
