@@ -54,7 +54,7 @@ app.get("/", (req, res) => {
 		)
 	});
 	
-	res.render("home", {"jsonBody": jsonBody});
+	res.render("home", {dataPoints: dataPoints});
 });
 
 app.listen(3000, () => {

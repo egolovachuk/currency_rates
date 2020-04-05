@@ -9,13 +9,12 @@
 	<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 	<!-- Connecting the chart script from the local file -->
-	<!-- <script type="text/javascript" src="/chart.js"></script>	 -->
-	</head>
+	<script type="text/javascript" src="/chart.js" async>initApp(<%- dataPoints %>);</script>
+</head>
 <body>
 <h1>
-Now the XML body is returned to the server console as a JSON OBJECT!
+Trying to pass the server var to the client side!
 </h1>
-	<p><%= jsonBody %></p>
 <!-- Inserting the CanvasJS chart below -->
 <!-- <div id="chartContainer" style="height: 300px; width: 100%;"></div> -->
 <!-- Inserting the Chart.js chart below -->
