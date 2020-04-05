@@ -14,6 +14,7 @@ app.get("/", (req, res) => {
 	var url = "http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=12/03/2020&date_req2=16/03/2020&VAL_NM_RQ=R01235";
 	var body = "";
 	var jsonBody;
+	var dataPoints = [];
 	
 	http.get(url, res => {
 		
@@ -28,7 +29,27 @@ app.get("/", (req, res) => {
 			
 			jsonBody = xmlParser.toJson(body);
 			jsonBody = JSON.parse(jsonBody);
-			console.log(jsonBody);
+			console.log(jsonBody.ValCurs.Record);
+			
+			//Cretaing pairs for dataPoints array
+			jsonBody.ValCurs.Record.forEach(function(pair){
+			var x = pair.Date;
+			var y = pair.Value;
+			
+			// Splicing "y" into two parts, removing the textual comma from "y" 
+			// and replacing it with numeric comma
+			var comma = y.search(",");
+			// Getting the textual comma position and  "y" partitioning
+			var yFirst = y.slice(0,comma); 
+			var ySecond = y.slice(comma+1,-1);
+			// Inserting the numeric comma
+			var yRes = yFirst+"."+ySecond;
+		
+			//Pushing an object to the dataPoints array parsing the floating value
+			dataPoints.push({x: x, y: parseFloat(yRes)});
+			});
+			
+			console.log(dataPoints);
 			}
 		)
 	});
