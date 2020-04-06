@@ -2,19 +2,24 @@
 <html>
 <head>
 	<title>Currency Rates</title>
-	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/style.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-git.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 	
 </head>
 <body>
-<h1>
-Trying to pass the server var to the client side!
-</h1>
+<div class="jumbotron">
+	<div class="container">
+		<h1 class="display-4">Welcome to Curency Rates!</h1>	
+		<p class="lead">Chart shows the USD to RUB quotation for the fixed period (~1 year)</p>
+	</div>
+</div>	
 <!-- Inserting the Apexchart chart below -->
 <div id="chart"></div>
-
+<!-- Apexchart script start (https://apexcharts.com/docs/update-charts-from-json-api-ajax -->
 <script>
+		//Apexchart options array	
 		var options = {
 		chart: {
 			height: 350,
@@ -25,7 +30,7 @@ Trying to pass the server var to the client side!
 		},
 		series: [],
 		title: {
-			text: 'Rates',
+			text: 'USD (RUB)',
 		},
 		noData: {
 		text: 'Loading...'
@@ -34,25 +39,18 @@ Trying to pass the server var to the client side!
 	
 	var chart = new ApexCharts(document.querySelector("#chart"), options);
 	
-	//Updating the 'series' array of var options below with given dataPoints
-	// chart.updateSeries(
-	// 	[{
-	// 		name: 'Rates',
-	// 		data: dataPoints
-	// 	}]
-	// );
-	
+	//Updating the 'series' array of var options below with given dataPoints, fetched from the /chart root
 	$.getJSON('/chart', function(response) {
         chart.updateSeries([{
           name: 'USD',
           data: response
         }])
 });
-	
+	//Apexchart rendering function
 	chart.render();
 </script>
-		
-<!-- Form submission logic temptlate -->
+<!-- Apexchart script end -->
+<!-- Form submission logic temptlate start-->
 <!-- 
 <form action="/some_address/selector" method="POST">
 
