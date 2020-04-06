@@ -1,10 +1,7 @@
 //Chart script provided by Apexchart (https://apexcharts.com/docs/update-charts-from-json-api-ajax/#)
-var initApp = (dataPoints) => {
-	var chart = new ApexCharts(
-		document.querySelector("#chart"),
-		options
-	);
 
+window.onload = (dataPoints) => {
+	
 	var options = {
 		chart: {
 			height: 350,
@@ -22,6 +19,8 @@ var initApp = (dataPoints) => {
 		}
 	}
 	
+	var chart = new ApexCharts(document.querySelector("#chart"), options);
+	
 	//Updating the 'series' array of var options below with given dataPoints
 	chart.updateSeries(
 		[{
@@ -32,6 +31,7 @@ var initApp = (dataPoints) => {
 	
 	chart.render();
 }
+	
 	// var url = 'rates.json';
 
 	// $.getJSON(url, function(response) {
