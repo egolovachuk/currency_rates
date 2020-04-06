@@ -35,12 +35,19 @@ Trying to pass the server var to the client side!
 	var chart = new ApexCharts(document.querySelector("#chart"), options);
 	
 	//Updating the 'series' array of var options below with given dataPoints
-	chart.updateSeries(
-		[{
-			name: 'Rates',
-			data: dataPoints
-		}]
-	);
+	// chart.updateSeries(
+	// 	[{
+	// 		name: 'Rates',
+	// 		data: dataPoints
+	// 	}]
+	// );
+	
+	$.getJSON('/chart', function(response) {
+        chart.updateSeries([{
+          name: 'USD',
+          data: response
+        }])
+});
 	
 	chart.render();
 </script>

@@ -8,16 +8,21 @@ app.set("view engine","ejs");
 app.use(express.static("public"));//to use separate folder for css and other scripts files
 app.use(bodyParser.urlencoded({extended: true})) //telling express to use body-parser
 
+//home route
+app.get("/", (req, res) => {
+	res.render("home");
+});
 
 //chart route
-app.get("/", (req, res) => {
+app.get("/chart", (req, res) => {
 	
 	var url = "http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=12/03/2020&date_req2=16/03/2020&VAL_NM_RQ=R01235";
 	var xmlBody = "";
 	var jsonBody;
 	var dataPoints = [];
 	
-	var request = new Promise((resolve, reject) => {
+	//Promises logic part 1
+	var request = new Promise((resolve, reject) => { 
 		http.get(url, res => {
 		
 		res.setEncoding("utf8");
@@ -50,14 +55,15 @@ app.get("/", (req, res) => {
 			resolve(dataPoints.push({x: x, y: parseFloat(yRes)}));
 			});
 			
-			console.log("From promise:"+ dataPoints);
+			//console.log("From promise:"+ dataPoints);
 			}
 		)
 		});
 	});
-	request.then(()=>{
+	
+	//Promises logic part 2
+	request.then(()=>{ 
 		res.send(dataPoints);
-	    //res.render("home");
 	});
 	
 });
