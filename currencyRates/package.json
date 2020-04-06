@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/egolovachuk/currencyRates#readme",
   "dependencies": {
+    "apexcharts": "^3.18.1",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "request": "^2.88.2",

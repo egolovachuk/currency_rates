@@ -8,28 +8,29 @@ app.set("view engine","ejs");
 app.use(express.static("public"));//to use separate folder for css and other scripts files
 app.use(bodyParser.urlencoded({extended: true})) //telling express to use body-parser
 
+
 //chart route
 app.get("/", (req, res) => {
 	
 	var url = "http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=12/03/2020&date_req2=16/03/2020&VAL_NM_RQ=R01235";
-	var body = "";
+	var xmlBody = "";
 	var jsonBody;
 	var dataPoints = [];
 	
-	http.get(url, res => {
+	var request = new Promise((resolve, reject) => {
+		http.get(url, res => {
 		
 		res.setEncoding("utf8");
 		
 		res.on("data", data => {
-			body += data;
+			xmlBody += data;
 			//console.log(`XML `, typeof(body), `: ${body}`)
 			});
 		 
-		res.on("end", () => {
-			
-			jsonBody = xmlParser.toJson(body);
+		res.on("end", () => {			
+			jsonBody = xmlParser.toJson(xmlBody);
 			jsonBody = JSON.parse(jsonBody);
-			console.log(jsonBody.ValCurs.Record);
+			//console.log(jsonBody.ValCurs.Record);
 			
 			//Cretaing pairs for dataPoints array
 			jsonBody.ValCurs.Record.forEach(function(pair){
@@ -46,15 +47,19 @@ app.get("/", (req, res) => {
 			var yRes = yFirst+"."+ySecond;
 		
 			//Pushing an object to the dataPoints array parsing the floating value
-			dataPoints.push({x: x, y: parseFloat(yRes)});
+			resolve(dataPoints.push({x: x, y: parseFloat(yRes)}));
 			});
 			
-			console.log(dataPoints);
+			console.log("From promise:"+ dataPoints);
 			}
 		)
+		});
+	});
+	request.then(()=>{
+		res.send(dataPoints);
+	    //res.render("home");
 	});
 	
-	res.render("home", {dataPoints: dataPoints});
 });
 
 app.listen(3000, () => {

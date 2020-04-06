@@ -4,23 +4,47 @@
 	<title>Currency Rates</title>
 	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-git.min.js"></script>
-	<!-- <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script> -->
-	<!-- <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script> -->
-	<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-	<!-- Connecting the chart script from the local file -->
-	<script type="text/javascript" src="/chart.js" async>initApp(<%- dataPoints %>);</script>
+	
 </head>
 <body>
 <h1>
 Trying to pass the server var to the client side!
 </h1>
-<!-- Inserting the CanvasJS chart below -->
-<!-- <div id="chartContainer" style="height: 300px; width: 100%;"></div> -->
-<!-- Inserting the Chart.js chart below -->
-<!-- <canvas id="myChart" width="100" height="100"></canvas> -->
 <!-- Inserting the Apexchart chart below -->
 <div id="chart"></div>
+
+<script>
+		var options = {
+		chart: {
+			height: 350,
+			type: 'line',
+		},
+		dataLabels: {
+			enabled: false
+		},
+		series: [],
+		title: {
+			text: 'Rates',
+		},
+		noData: {
+		text: 'Loading...'
+		}
+	}
+	
+	var chart = new ApexCharts(document.querySelector("#chart"), options);
+	
+	//Updating the 'series' array of var options below with given dataPoints
+	chart.updateSeries(
+		[{
+			name: 'Rates',
+			data: dataPoints
+		}]
+	);
+	
+	chart.render();
+</script>
+		
 <!-- Form submission logic temptlate -->
 <!-- 
 <form action="/some_address/selector" method="POST">
