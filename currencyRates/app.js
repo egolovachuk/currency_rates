@@ -13,8 +13,13 @@ app.get("/", (req, res) => {
 	res.render("home");
 });
 
+<<<<<<< HEAD
 //currency route
 app.get("/currency", (req, res) => { 
+=======
+//chart route
+app.get("/chart", (req, res) => {
+>>>>>>> f864bdb447b572c841b0ba187af779ff62dff132
 	
 	var url = "http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=12/03/2019&date_req2=16/03/2020&VAL_NM_RQ=R01235";
 	var xmlBody = "";
@@ -64,14 +69,21 @@ app.get("/currency", (req, res) => {
 	//Promises logic part 2
 	request.then(()=>{ 
 		res.send(dataPoints);
+<<<<<<< HEAD
 		// res.render("home", {
 		// 	dataPoints: JSON.stringify(dataPoints)
 		// });
 		console.log(dataPoints);
+=======
+>>>>>>> f864bdb447b572c841b0ba187af779ff62dff132
 	});
 	
 });
 
 app.listen(3000, () => {
+<<<<<<< HEAD
 	console.log("Currency Rates App Server up and listen to port 3000 at " + Date());
+=======
+	console.log("Currency Rates App Server up and listen to port 3000");
+>>>>>>> f864bdb447b572c841b0ba187af779ff62dff132
 });
