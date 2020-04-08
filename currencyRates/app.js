@@ -13,18 +13,8 @@ app.get("/", (req, res) => {
 	res.render("home");
 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 //currency route
 app.get("/currency", (req, res) => { 
-=======
-//chart route
-app.get("/chart", (req, res) => {
->>>>>>> f864bdb447b572c841b0ba187af779ff62dff132
-=======
-//currency route
-app.get("/currency", (req, res) => { 
->>>>>>> afc74b2b67cb1b3bb4cc974f3be0b75f2b2ad0e3
 	
 	var url = "http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=12/03/2019&date_req2=16/03/2020&VAL_NM_RQ=R01235";
 	var xmlBody = "";
@@ -74,33 +64,14 @@ app.get("/currency", (req, res) => {
 	//Promises logic part 2
 	request.then(()=>{ 
 		res.send(dataPoints);
-<<<<<<< HEAD
-<<<<<<< HEAD
-		// res.render("home", {
-		// 	dataPoints: JSON.stringify(dataPoints)
-		// });
-		console.log(dataPoints);
-=======
->>>>>>> f864bdb447b572c841b0ba187af779ff62dff132
-=======
 		// res.render("home", {
 		// 	dataPoints: JSON.stringify(dataPoints)
 		// });
 		//console.log(dataPoints);
->>>>>>> afc74b2b67cb1b3bb4cc974f3be0b75f2b2ad0e3
 	});
 	
 });
 
 app.listen(3000, () => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	console.log("Currency Rates App Server up and listen to port 3000 at " + Date());
-=======
-	console.log("Currency Rates App Server up and listen to port 3000");
->>>>>>> f864bdb447b572c841b0ba187af779ff62dff132
-});
-=======
 	console.log("Currency Rates App Server up and listen to port 3000 at " + Date());
 });
->>>>>>> afc74b2b67cb1b3bb4cc974f3be0b75f2b2ad0e3
