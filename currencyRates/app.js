@@ -13,8 +13,8 @@ app.get("/", (req, res) => {
 	res.render("home");
 });
 
-//chart route
-app.get("/chart", (req, res) => {
+//currency route
+app.get("/currency", (req, res) => { 
 	
 	var url = "http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=12/03/2019&date_req2=16/03/2020&VAL_NM_RQ=R01235";
 	var xmlBody = "";
@@ -64,10 +64,14 @@ app.get("/chart", (req, res) => {
 	//Promises logic part 2
 	request.then(()=>{ 
 		res.send(dataPoints);
+		// res.render("home", {
+		// 	dataPoints: JSON.stringify(dataPoints)
+		// });
+		//console.log(dataPoints);
 	});
 	
 });
 
 app.listen(3000, () => {
-	console.log("Currency Rates App Server up and listen to port 3000");
+	console.log("Currency Rates App Server up and listen to port 3000 at " + Date());
 });
