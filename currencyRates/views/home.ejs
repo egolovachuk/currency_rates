@@ -6,21 +6,11 @@
 	<link rel="stylesheet" type="text/css" href="/style.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-git.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
 	<script src="/chart.js"></script>
-=======
-	
->>>>>>> f864bdb447b572c841b0ba187af779ff62dff132
-=======
-	<script src="/chart.js"></script>
->>>>>>> afc74b2b67cb1b3bb4cc974f3be0b75f2b2ad0e3
 </head>
 <body>
 <div class="jumbotron">
 	<div class="container">
-<<<<<<< HEAD
-<<<<<<< HEAD
 		<h1 class="display-5">Welcome to Currency Rates!</h1>	
 		<p class="lead">Chart shows the USD to RUB quotation for the fixed period (~1 year)</p>
 	</div>
@@ -28,55 +18,6 @@
 <!-- Apexchart chart div -->
 <div id="chart"></div>
 
-=======
-		<h1 class="display-4">Welcome to Currency Rates!</h1>	
-=======
-		<h1 class="display-5">Welcome to Currency Rates!</h1>	
->>>>>>> afc74b2b67cb1b3bb4cc974f3be0b75f2b2ad0e3
-		<p class="lead">Chart shows the USD to RUB quotation for the fixed period (~1 year)</p>
-	</div>
-</div>	
-<!-- Apexchart chart div -->
-<div id="chart"></div>
-<<<<<<< HEAD
-<!-- Apexchart script start (https://apexcharts.com/docs/update-charts-from-json-api-ajax -->
-<script>
-		//Apexchart options array	
-		var options = {
-		chart: {
-			height: 350,
-			type: 'line',
-		},
-		dataLabels: {
-			enabled: false
-		},
-		series: [],
-		title: {
-			text: 'USD (RUB)',
-		},
-		noData: {
-		text: 'Loading...'
-		}
-	}
-	
-	var chart = new ApexCharts(document.querySelector("#chart"), options);
-	
-	//Updating the 'series' array of var options below with given dataPoints, fetched from the /chart root
-	$.getJSON('/chart', function(response) {
-        chart.updateSeries([{
-          name: 'USD',
-          data: response
-        }])
-});
-	//Apexchart rendering function
-	chart.render();
-</script>
-<!-- Apexchart script end -->
-<!-- Form submission logic temptlate start-->
->>>>>>> f864bdb447b572c841b0ba187af779ff62dff132
-=======
-
->>>>>>> afc74b2b67cb1b3bb4cc974f3be0b75f2b2ad0e3
 <!-- 
 <form action="/some_address/selector" method="POST">
 
@@ -105,8 +46,4 @@
 </form> 
 -->
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> f864bdb447b572c841b0ba187af779ff62dff132
