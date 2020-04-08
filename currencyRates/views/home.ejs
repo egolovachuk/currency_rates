@@ -6,51 +6,18 @@
 	<link rel="stylesheet" type="text/css" href="/style.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-git.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-	
+	<script src="/chart.js"></script>
 </head>
 <body>
 <div class="jumbotron">
 	<div class="container">
-		<h1 class="display-4">Welcome to Currency Rates!</h1>	
+		<h1 class="display-5">Welcome to Currency Rates!</h1>	
 		<p class="lead">Chart shows the USD to RUB quotation for the fixed period (~1 year)</p>
 	</div>
 </div>	
-<!-- Inserting the Apexchart chart below -->
+<!-- Apexchart chart div -->
 <div id="chart"></div>
-<!-- Apexchart script start (https://apexcharts.com/docs/update-charts-from-json-api-ajax -->
-<script>
-		//Apexchart options array	
-		var options = {
-		chart: {
-			height: 350,
-			type: 'line',
-		},
-		dataLabels: {
-			enabled: false
-		},
-		series: [],
-		title: {
-			text: 'USD (RUB)',
-		},
-		noData: {
-		text: 'Loading...'
-		}
-	}
-	
-	var chart = new ApexCharts(document.querySelector("#chart"), options);
-	
-	//Updating the 'series' array of var options below with given dataPoints, fetched from the /chart root
-	$.getJSON('/chart', function(response) {
-        chart.updateSeries([{
-          name: 'USD',
-          data: response
-        }])
-});
-	//Apexchart rendering function
-	chart.render();
-</script>
-<!-- Apexchart script end -->
-<!-- Form submission logic temptlate start-->
+
 <!-- 
 <form action="/some_address/selector" method="POST">
 
