@@ -54,4 +54,8 @@
 //chartInit closing bracket	
 // }; 
 
+<<<<<<< HEAD
 		
+=======
+		
+>>>>>>> afc74b2b67cb1b3bb4cc974f3be0b75f2b2ad0e3
