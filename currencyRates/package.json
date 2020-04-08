@@ -1,0 +1,26 @@
+{
+  "name": "currencyrates",
+  "version": "1.0.0",
+  "description": "charts of currency rates",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egolovachuk/currencyRates.git"
+  },
+  "author": "Eduard Golovachuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/egolovachuk/currencyRates/issues"
+  },
+  "homepage": "https://github.com/egolovachuk/currencyRates#readme",
+  "dependencies": {
+    "apexcharts": "^3.18.1",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "request": "^2.88.2",
+    "xml2json": "^0.12.0"
+  }
+}

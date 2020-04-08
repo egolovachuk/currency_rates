@@ -1,0 +1,7 @@
+<%- include ("partials/header") %>
+<h1>Some header goes here</h1>
+<p>You have choosen <%= tmpChoice %></p>
+<%	if(tmpChoice.toLowerCase() === "leyla"){ %>
+<p>You've made a right choice!</p>
+<% } %>
+<%- include ("partials/footer") %>

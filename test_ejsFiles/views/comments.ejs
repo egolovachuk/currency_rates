@@ -1,0 +1,13 @@
+<%- include ("partials/footer") %>
+<h1>Comments Page</h1>
+
+<li><%= comments %> - just for demo purposes</li>
+
+<% for (i=0;i<comments.length;i++){ %>
+<li><%= comments[i].title %> - <strong><%= comments[i].author %></strong></li>
+<% } %>
+
+<% comments.forEach(function(post){ %>
+<li><%= post.title %> - <%= post.author %></li>
+<% }) %>
+<%- include ("partials/header") %>
