@@ -10,7 +10,7 @@
 		var options = {
 		chart: {
 			height: 350,
-			type: 'line',
+			type: 'area',
 		},
 		dataLabels: {
 			enabled: false
@@ -21,7 +21,17 @@
 		},
 		noData: {
 		text: 'Loading...'
-		}
+		},
+		tooltip: {
+        	x: 
+			{
+				format: 'dd/MM/yy HH:mm'
+			},
+        },
+		stroke: 
+			{
+				curve: 'smooth'
+			}	
 	}
 	
 	var chart = new ApexCharts(document.querySelector("#chart"), options);
@@ -31,42 +41,35 @@
 		//fetching data from the currency route logic
 	$.getJSON('/currency', function(response) {
 		for (i=0; i<response.length; i++) {
-			
 			xaxis.push(response[i].x);
-			
 		}
 		console.log(xaxis);
-		
 		for (i=0; i<response.length; i++) {
-			
 			data1.push(response[i].y);
-			
 		}
 		console.log(data1);
-	// chart.updateSeries([{
-	// name: 'USD',
-	// data: response
-	// }])
+		chart.updateSeries([{
+		name: 'USD',
+		data: data1
+		}]);
+		
+		chart.updateOptions({
+		xaxis: {
+          type: 'datetime',
+          categories: xaxis
+        }
+		});
 	});
 
 	$.getJSON('/oil', function(response) {
-		// for (i=0; i<response.length; i++) {
-			
-		// 	xaxis.push(response[i].x);
-			
-		// }
-		// console.log(xaxis);
-		
 		for (i=0; i<response.length; i++) {
-			
 			data2.push(response[i].y);
-			
 		}
 		console.log(data2);
-	// chart.updateSeries([{
-	// name: 'USD',
-	// data: response
-	// }])
+		chart.appendSeries({
+		name: 'EUR',
+		data: data2
+		})
 	});
 
 

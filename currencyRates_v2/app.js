@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 //currency route
 app.get("/currency", (req, res) => { 
 	
-	var url = "http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=12/03/2019&date_req2=16/03/2020&VAL_NM_RQ=R01235";
+	var url = "http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=01/03/2019&date_req2=16/03/2020&VAL_NM_RQ=R01235";
 	var xmlBody = "";
 	var jsonBody;
 	var dataPoints = [];
@@ -75,7 +75,7 @@ app.get("/currency", (req, res) => {
 //oil route
 app.get("/oil", (req, res) => { 
 	
-	var url = "http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=12/03/2019&date_req2=16/03/2020&VAL_NM_RQ=R01239";
+	var url = "http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=01/03/2019&date_req2=16/03/2020&VAL_NM_RQ=R01239";
 	var xmlBody = "";
 	var jsonBody;
 	var dataPoints = [];
