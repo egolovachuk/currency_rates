@@ -1,5 +1,7 @@
  //chartInit was used here in accordance to https://ru.stackoverflow.com/questions/514284/
-
+	var xaxis = [];
+	var data1 = [];
+	var data2 = [];
 	//chartInit opening bracket
 	//var chartInit = (usdData) => {  
 		
@@ -23,24 +25,58 @@
 	}
 	
 	var chart = new ApexCharts(document.querySelector("#chart"), options);
-	
+	 
 	//Updating the 'series' array of var options below with given dataPoints, fetched from the /chart root
 	
 		//fetching data from the currency route logic
 	$.getJSON('/currency', function(response) {
-	chart.updateSeries([{
-	name: 'USD',
-	data: response
-	}])
+		for (i=0; i<response.length; i++) {
+			
+			xaxis.push(response[i].x);
+			
+		}
+		console.log(xaxis);
+		
+		for (i=0; i<response.length; i++) {
+			
+			data1.push(response[i].y);
+			
+		}
+		console.log(data1);
+	// chart.updateSeries([{
+	// name: 'USD',
+	// data: response
+	// }])
 	});
 
-		//fetching data from the oil route logic
 	$.getJSON('/oil', function(response) {
-	chart.appendData([{
-	name: 'EUR',
-	data: response
-	}])
+		// for (i=0; i<response.length; i++) {
+			
+		// 	xaxis.push(response[i].x);
+			
+		// }
+		// console.log(xaxis);
+		
+		for (i=0; i<response.length; i++) {
+			
+			data2.push(response[i].y);
+			
+		}
+		console.log(data2);
+	// chart.updateSeries([{
+	// name: 'USD',
+	// data: response
+	// }])
 	});
+
+
+		//fetching data from the oil route logic
+	// // $.getJSON('/oil', function(response) {
+	// // chart.appendData([{
+	// // name: 'EUR',
+	// // data: response
+	// }])
+	// });
 	
 	
 	
