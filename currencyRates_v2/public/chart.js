@@ -1,16 +1,20 @@
- //chartInit was used here in accordance to https://ru.stackoverflow.com/questions/514284/
-	var xaxis = [];
-	var data1 = [];
-	var data2 = [];
-	//chartInit opening bracket
-	//var chartInit = (usdData) => {  
+//dateSet was used here in accordance to https://ru.stackoverflow.com/questions/514284/
+	
+//dateSet opening bracket
+const dateSet = (dateStart, dateEnd) => {  
+
+		console.log(dateStart, dateEnd);
 		
+		var xaxis = [];
+		var data1 = [];
+		var data2 = [];
+
 		//Apexchart options array	
 		
 		var options = {
 		chart: {
 			height: 350,
-			type: 'area',
+			type: 'line',
 		},
 		dataLabels: {
 			enabled: false
@@ -22,12 +26,6 @@
 		noData: {
 		text: 'Loading...'
 		},
-		tooltip: {
-        	x: 
-			{
-				format: 'dd/MM/yy HH:mm'
-			},
-        },
 		stroke: 
 			{
 				curve: 'smooth'
@@ -39,60 +37,73 @@
 	//Updating the 'series' array of var options below with given dataPoints, fetched from the /chart root
 	
 		//fetching data from the currency route logic
-	$.getJSON('/currency', function(response) {
-		for (i=0; i<response.length; i++) {
-			xaxis.push(response[i].x);
-		}
-		console.log(xaxis);
-		for (i=0; i<response.length; i++) {
-			data1.push(response[i].y);
-		}
-		console.log(data1);
-		chart.updateSeries([{
-		name: 'USD',
-		data: data1
-		}]);
 		
-		chart.updateOptions({
-		xaxis: {
-          type: 'datetime',
-          categories: xaxis
-        }
-		});
-	});
 
-	$.getJSON('/oil', function(response) {
-		for (i=0; i<response.length; i++) {
-			data2.push(response[i].y);
-		}
-		console.log(data2);
-		chart.appendSeries({
-		name: 'EUR',
-		data: data2
-		})
-	});
+			var url = "/currency";              //?dateStart=${dateStart}&dateEnd=${dateEnd}
+			console.log(url);
 
+			$.getJSON(url, function(response) {
 
-		//fetching data from the oil route logic
-	// // $.getJSON('/oil', function(response) {
-	// // chart.appendData([{
-	// // name: 'EUR',
-	// // data: response
-	// }])
-	// });
-	
-	
-	
-		//deprecated - usdData variable was defined through the chartInit function parameter	
-	// chart.updateSeries ([{
-	// name: 'USD',
-	// data: usdData
-	// }])
-	
-	//Apexchart rendering function
+				// function formatDate(date) {                
+				// 		day = date.slice(0,2);
+				// 		month = date.slice(3,5);
+				// 		year = date.slice(6,10);
+				
+				// 	if (month.length < 2) 
+				// 		month = '0' + month;
+				// 	if (day.length < 2) 
+				// 		day = '0' + day;
+				
+				// 	return [year, month, day].join('-');
+				// }
+
+				// for (i=0; i<response.length; i++) {
+				// 	date = formatDate(response[i].x);
+				// 	xaxis.push(date);
+				// }
+				// console.log(xaxis);
+				// for (i=0; i<response.length; i++) {
+				// 	data1.push(response[i].y);
+				// }
+				console.log(response);
+				chart.updateSeries([{
+				name: 'USD',
+				data: response
+				}]);
+				
+				// chart.updateOptions({
+				// xaxis: {
+				//   type: 'datetime',
+				//   categories: xaxis
+				// }
+				// });
+			});
+		
+
+		
+			$.getJSON('', function(response) {	
+				
+				// response.forEach((point) => {
+				// 	xaxis.forEach((xax) => {
+				// 		if (point.x == xax)
+				// 			// console.log(point.y);
+				// 			data2.push({x: point.x, y: point.y});	
+				// 			else if (point.x !== xax)
+				// 			{
+				// 				data2.push
+				// 			}
+				// 	}) 		
+				// });
+				//console.log(data2);
+				chart.appendSeries({
+				name: 'OIL',
+				data: response
+				})
+			});	 
+				
 	chart.render();
 
-//chartInit closing bracket	
-// }; 
+//dateSet closing bracket	
+}; 
 
 		
